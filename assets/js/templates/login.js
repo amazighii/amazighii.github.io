@@ -1,20 +1,6 @@
-// function login() {
-//     console.log("im here bitch")
-//     let container = document.querySelector(".container");
-//     const inputEmail = document.createElement("input");
-//     inputEmail.type = "email";
-//     inputEmail.placeholder = "username or email";
+import { fetchLogin } from "../services/services.js";
 
-//     const inputPassword = document.createElement("input");
-//     inputPassword.type = "password";
-//     inputPassword.placeholder = "password";
-
-//     const loginbtn = document.createElement("button");
-//     loginbtn.textContent = "Login";
-//     container.append(inputEmail, inputPassword, loginbtn)
-// }
-
-function login() {
+export function login() {
     let container = document.querySelector(".container");
     container.innerHTML = "";
     let loginWrapper = document.createElement("div");
@@ -34,7 +20,7 @@ function login() {
     let form = document.createElement('form');
     form.className = "form";
 
-   let username = document.createElement('input');
+    let username = document.createElement('input');
     username.setAttribute("type", "email");
     username.id = "username";
     username.setAttribute("placeholder", "username or email");
@@ -44,24 +30,14 @@ function login() {
     password.id = "password"
     password.setAttribute("placeholder", "password");
 
-    let button = document.createElement('button');
-    button.id = "loginbuttn"
-    button.innerText = 'Login';
-    button.setAttribute("onclick", "fetchLogin(event)");
+    let loginbtn = document.createElement('button');
+    loginbtn.id = "loginbuttn"
+    loginbtn.innerText = 'Login';
 
-    let signinHolder = document.createElement('div');
-    signinHolder.className = 'signInHolder';
-    let signIntext = document.createElement('p');
-    signIntext.className = "signInText";
-
-    signIntext.innerText = "New to our Forum?";
-    signinHolder.append(signIntext);
-
-    let registerButton = document.createElement('button');
-    registerButton.id = "registerbuttn"
-    registerButton.setAttribute("onclick", "register(event)");
-    registerButton.innerText = "Sign Up";
-    signinHolder.append(registerButton);
+    loginbtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchLogin(btoa(username.value + ':' + password.value));
+    })
 
     let picture = document.createElement('img');
     picture.id = "pic";
@@ -76,18 +52,12 @@ function login() {
     passwordText.className = "passwordText";
     passwordText.innerText = "Password";
 
-    form.append(welcomeholder, emailText, username, passwordText, password, button, signinHolder);
+    let showerror = document.createElement('div');
+    showerror.className = 'showerror';
+
+    form.append(welcomeholder, emailText, username, passwordText, password, showerror, loginbtn);
     loginWrapper.append(form, picture);
 
     container.append(loginWrapper);
 }
 
-
-
-
-
-
-
-
-
-login();
