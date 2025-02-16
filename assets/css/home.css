@@ -32,6 +32,7 @@
     justify-content: space-between;
     font-size: 15px;
     cursor: pointer;
+    border: 2px solid black;
 }
 
 .logout:hover {
@@ -43,17 +44,16 @@
 }
 
 .cardsContainer {
-    background-color: #b3b3b3;
-    border: 2px solid black;
-    border-radius: 10px;
-    height: 10rem;
-    width: 17rem;
-    margin: 20px 0 0 20px;
+    width: 20rem;
 }
 
 .profileContainer {
-    height: 10rem;
+    background-color: #b3b3b3;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 9rem;
     display: flex;
+    margin: 20px 0 0 20px;
 }
 
 .profileimgWrapper {
@@ -71,7 +71,185 @@
     border-radius: 10px;
 }
 
-.credentialsWrapper {
+.credentialsContainer {
     width: 50%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.credentialsWrapper {
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.fullname {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.username {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.xpContainer {
+    height: 7rem;
+    background-color: #b3b3b3;
+    margin: 20px 0 0 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+}
+
+.xpText {
+    position: absolute;
+    margin: -10px 0 0 20px;
+    color: #d4d3d3;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #000000;
+    border-radius: 4px;
+    width: 1.9rem;
+    height: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.xpAmountWrapper {
+    width: 50%;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kbLogoWrapper {
+    width: 50%;
+    font-size: 50px;
+    color: #3e3d3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kbLogo {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 5.3rem;
+    width: 5.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hrLine {
+    border-color: rgb(138, 132, 132);
+}
+
+.levelContainer {
+    height: 7rem;
+    background-color: #b3b3b3;
+    margin: 20px 0 0 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+}
+
+.levelText {
+    position: absolute;
+    margin: -10px 0 0 20px;
+    color: #d4d3d3;
+    font-weight: 600;
+    font-size: 18px;
+    background-color: #000000;
+    border-radius: 4px;
+    width: 3.3rem;
+    height: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleWrapper {
+    width: 50%;
+    font-size: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proTitel {
+    width: 7rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.titleBorder {
+    width: 8rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.levelWrapper {
+    width: 50%;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auditContainer {
+    height: 7rem;
+    background-color: #b3b3b3;
+    margin: 20px 0 0 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+}
+
+.auditRatioWrapper {
+    width: 50%;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auditGraphWrapper {
+    width: 50%;
+}
+
+.auditRatioText {
+    position: absolute;
+    margin: -10px 0 0 20px;
+    color: #d4d3d3;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #000000;
+    border-radius: 4px;
+    width: 6.4rem;
+    height: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.doughnutChart {
+    width: 100%;
+    height: 80%;
+    margin-top: 10px;
 }

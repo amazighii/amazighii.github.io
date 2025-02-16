@@ -3,8 +3,11 @@ import { login } from "../templates/login.js";
 
 let jwtKey = localStorage.getItem("jwtKey");
 
-if (jwtKey) {
-    home();
-} else {
-    login();
+export function isLoggedIn() {
+    if (jwtKey) {
+        home();
+    } else {
+        login();
+    }
 }
+isLoggedIn();
