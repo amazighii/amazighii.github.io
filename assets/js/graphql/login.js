@@ -26,11 +26,32 @@ export let profilequery = `
 `
 
 
-export const auditRatioquery =`
+export const auditRatioquery = `
 {
   user {
     totalUp
     totalDown
   }
 }
-` 
+`
+
+
+export const projectxp = `
+{
+  transaction(
+    where:
+    {
+      type: {_eq: "xp"}
+      event: {object: {type: {_eq: "module"}}}
+      object: {type:{_eq: "project"}}
+    }
+  ) {
+    amount
+    createdAt
+      object {
+        type
+        name
+      }
+  }
+}
+`

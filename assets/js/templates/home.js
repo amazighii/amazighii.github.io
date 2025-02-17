@@ -1,3 +1,4 @@
+import { projectXp } from "../components/graphs.js";
 import { constructHeader } from "../components/header.js";
 import { auditRatio, levelCard, profile, xpCard } from "../components/userInfoCards.js";
 import { profilequery } from "../graphql/login.js";
@@ -5,7 +6,7 @@ import { fetchcredentials } from "../services/services.js";
 
 export async function home() {
     let userinfo = await fetchcredentials(profilequery);
-    console.log(userinfo.data.user[0].totalDown);
+    // console.log(userinfo.data.user[0].totalDown);
 
     let container = document.querySelector(".container");
     container.innerHTML = "";
@@ -23,9 +24,14 @@ export async function home() {
     cardsContainer.append(levelCard(userinfo.data.user[0].events[0].level));
 
     cardsContainer.append(auditRatio(userinfo.data.user[0].auditRatio,
-        userinfo.data.user[0].totalUp,userinfo.data.user[0].totalDown
+        userinfo.data.user[0].totalUp, userinfo.data.user[0].totalDown
     ));
 
+    const graphsHolder = document.createElement('div');
+    graphsHolder.className = "graphsHolder";
 
-    container.append(cardsContainer);
+    graphsHolder.append(await projectXp());
+
+
+    container.append(cardsContainer, graphsHolder);
 }
