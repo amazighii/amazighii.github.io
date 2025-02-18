@@ -1,4 +1,4 @@
-import { projectXp } from "../components/graphs.js";
+import { projectXp, skillShart } from "../components/graphs.js";
 import { constructHeader } from "../components/header.js";
 import { auditRatio, levelCard, profile, xpCard } from "../components/userInfoCards.js";
 import { profilequery } from "../graphql/login.js";
@@ -12,6 +12,9 @@ export async function home() {
     container.innerHTML = "";
 
     document.body.prepend(constructHeader());
+
+    const projectName = document.createElement('div');
+    projectName.className = "projectName";
 
     let cardsContainer = document.createElement('div');
     cardsContainer.className = "cardsContainer";
@@ -30,7 +33,10 @@ export async function home() {
     const graphsHolder = document.createElement('div');
     graphsHolder.className = "graphsHolder";
 
-    graphsHolder.append(await projectXp(graphsHolder));
+    graphsHolder.append(projectName);
+
+    graphsHolder.append(await projectXp(projectName));
+    graphsHolder.append(await skillShart(projectName));
 
 
     container.append(cardsContainer, graphsHolder);

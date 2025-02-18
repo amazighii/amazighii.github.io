@@ -261,8 +261,9 @@
 .graphsHolder {
     /* width: 100%; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     margin: 1.3rem 0 0 2rem;
+    flex-direction: column;
     /* position: relative; */
 }
 
@@ -276,6 +277,7 @@
 
 .circle:hover {
     r: 4;
+    border: 2px solid black;
     cursor: pointer;
 }
 
@@ -288,4 +290,14 @@
     left: 0px;
     top: 0px;
     border-radius: 2px;
+    display: none;
+}
+
+.skillChart {
+    background-color: #b3b3b3;
+    height: 21rem;
+    width: 70rem;
+    border-radius: 15px;
+    display: block;
+    margin-top: 20px;
 }

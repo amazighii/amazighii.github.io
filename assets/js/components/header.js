@@ -1,3 +1,5 @@
+import { login } from "../templates/login.js";
+
 export function constructHeader() {
     let header = document.createElement('div');
     header.className = 'header';
@@ -14,6 +16,13 @@ export function constructHeader() {
     let logoutbtn = document.createElement('button');
     logoutbtn.className = 'logout';
     logoutbtn.innerHTML = '<img id="logoutSvg" src="../assets/img/Sign-out-01.svg"> <p>Logout</p>'
+    
+    logoutbtn.addEventListener('click', ()=> {
+        localStorage.removeItem('jwtKey');
+        header.remove();
+        document.querySelector('.container').innerHTML = "";
+        login();
+    })
 
 
     header.append(logo, headerText, logoutbtn);

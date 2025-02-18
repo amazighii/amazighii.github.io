@@ -28,6 +28,3 @@ export function auditRatioFixedValue(nb) {
     return (String(nb).split('.')[0] + '.' + String(Math.round(workingOnNbr)));
 }
 
-// export function formatxp(xp) {
-    
-// }
