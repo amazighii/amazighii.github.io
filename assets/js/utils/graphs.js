@@ -1,37 +1,48 @@
 export function doughnutChart(up, down) {
-    const canvas = document.createElement("canvas");
-    canvas.className = "doughnutChart";
-
-    const ctx = canvas.getContext("2d");
-
-    const data = [up, down];
-    const colors = ["#626161", "black"];
-
-    const total = data.reduce((sum, value) => sum + value, 0);
-    let startAngle = 0;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    const svgNS = "http://www.w3.org/2000/svg";
+    const size = 155; // SVG size
+    const center = size / 2;
     const outerRadius = 60;
     const innerRadius = 50;
+    const data = [up, down];
+    const colors = ["#626161", "black"];
+    const total = data.reduce((sum, value) => sum + value, 0);
+
+    let startAngle = 0;
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", size);
+    svg.setAttribute("height", size);
+    svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+    svg.classList.add("doughnutChart");
 
     data.forEach((value, index) => {
         const sliceAngle = (value / total) * 2 * Math.PI;
         const endAngle = startAngle + sliceAngle;
 
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, outerRadius, startAngle, endAngle);
-        ctx.closePath();
-        ctx.fillStyle = colors[index];
-        ctx.fill();
+        const x1 = center + outerRadius * Math.cos(startAngle);
+        const y1 = center + outerRadius * Math.sin(startAngle);
+        const x2 = center + outerRadius * Math.cos(endAngle);
+        const y2 = center + outerRadius * Math.sin(endAngle);
+
+        const largeArc = sliceAngle > Math.PI ? 1 : 0;
+
+        const pathData = `M${center},${center} L${x1},${y1} A${outerRadius},${outerRadius} 0 ${largeArc},1 ${x2},${y2} Z`;
+
+        const path = document.createElementNS(svgNS, "path");
+        path.setAttribute("d", pathData);
+        path.setAttribute("fill", colors[index]);
+        svg.appendChild(path);
 
         startAngle = endAngle;
     });
 
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, innerRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = "#d3d3d3"; // Background color to "cut out" the center
-    ctx.fill();
+    const innerCircle = document.createElementNS(svgNS, "circle");
+    innerCircle.setAttribute("cx", center);
+    innerCircle.setAttribute("cy", center);
+    innerCircle.setAttribute("r", innerRadius);
+    innerCircle.setAttribute("fill", "#d3d3d3"); // Center cut-out
+    svg.appendChild(innerCircle);
 
-    return canvas;
+    return svg;
+
 }

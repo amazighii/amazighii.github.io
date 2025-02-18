@@ -30,7 +30,7 @@ export async function home() {
     const graphsHolder = document.createElement('div');
     graphsHolder.className = "graphsHolder";
 
-    graphsHolder.append(await projectXp());
+    graphsHolder.append(await projectXp(graphsHolder));
 
 
     container.append(cardsContainer, graphsHolder);
