@@ -1,4 +1,4 @@
-import { projectXp, skillShart } from "../components/graphs.js";
+import { projectXp, skillChart } from "../components/graphs.js";
 import { constructHeader } from "../components/header.js";
 import { auditRatio, levelCard, profile, xpCard } from "../components/userInfoCards.js";
 import { profilequery } from "../graphql/login.js";
@@ -36,8 +36,24 @@ export async function home() {
     graphsHolder.append(projectName);
 
     graphsHolder.append(await projectXp(projectName));
-    graphsHolder.append(await skillShart(projectName));
+    graphsHolder.append(await skillChart(projectName, 1120));
 
 
     container.append(cardsContainer, graphsHolder);
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(async () => {
+            console.log('testing debounce')
+            let skillChartWidth = document.querySelector('.skillChart').getBoundingClientRect().width;
+
+            // console.log('help im being resized');
+            document.querySelector('.skillChart').innerHTML = "";
+            // console.log(document.querySelector('.skillChart').getBoundingClientRect().width)
+            await skillChart(projectName, skillChartWidth);
+        }, 200);
+
+    })
+
 }

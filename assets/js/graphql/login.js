@@ -63,7 +63,7 @@ export const skillsQuery = `
     where: 
     {
      type: { _in: ["skill_algo","skill_back-end", "skill_front-end","skill_prog", 
-      "skill_go","skill_css", "skill_html", "skill_js"] }
+      "skill_go","skill_css", "skill_js"] }
     }
     order_by: {type: asc, amount: desc }
   ) {

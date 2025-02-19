@@ -39,7 +39,7 @@ export async function projectXp(projectName) {
 
     svg.appendChild(path);
 
-  
+
 
     data.data.transaction.forEach((value, index) => {
         const circle = document.createElementNS(svgNS, "circle");
@@ -67,19 +67,19 @@ export async function projectXp(projectName) {
 
 }
 
-export async function skillShart(projectName) {
-    const svgNS = "http://www.w3.org/2000/svg";
+const svgNS = "http://www.w3.org/2000/svg";
+const svgRect = document.createElementNS(svgNS, 'svg');
+export async function skillChart(projectName) {
 
     const data = await fetchcredentials(skillsQuery);
-    console.log(data.data.transaction);
+    // console.log(data.data.transaction);
 
-
-    const width = 1120;
+console.log(window.innerWidth, window.innerWidth/2)
+    const width = window.innerWidth/2;
     const height = 320;
-    const padding = 20;
 
-    const svg = document.createElementNS(svgNS, 'svg');
-    svg.classList.add('skillChart');
+
+    svgRect.classList.add('skillChart');
 
 
     let count = width / data.data.transaction.length;
@@ -87,9 +87,10 @@ export async function skillShart(projectName) {
         const rect = document.createElementNS(svgNS, 'rect');
         rect.setAttribute('x', `${count}`)
         rect.setAttribute('y', `${height - value.amount * 5}`);
+        rect.classList.add('rect')
 
         rect.style.height = `${value.amount * 5}`
-        rect.style.width = "50px"
+        // rect.style.width = "50px"
 
 
         rect.addEventListener('mouseover', (e) => {
@@ -103,11 +104,16 @@ export async function skillShart(projectName) {
             projectName.style.display = "none";
         })
 
-        svg.append(rect);
+        svgRect.append(rect);
         count += width / data.data.transaction.length;
     })
 
 
-    return svg;
+    return svgRect;
 
 }
+
+// window.addEventListener('resize', () => {
+//     console.log('help im being resized');
+//     skillChart()
+// })

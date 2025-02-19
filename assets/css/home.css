@@ -170,7 +170,7 @@
 }
 
 .levelText {
-    position: absolute;
+    position: fixed;
     margin: -10px 0 0 20px;
     color: #d4d3d3;
     font-weight: 600;
@@ -259,7 +259,7 @@
 }
 
 .graphsHolder {
-    /* width: 100%; */
+    width: 100%;
     display: flex;
     /* justify-content: center; */
     margin: 1.3rem 0 0 2rem;
@@ -270,7 +270,7 @@
 .xpGraph {
     background-color: #b3b3b3;
     height: 25rem;
-    width: 70rem;
+    width: 80%;
     border-radius: 15px;
     display: block;
 }
@@ -296,8 +296,39 @@
 .skillChart {
     background-color: #b3b3b3;
     height: 21rem;
-    width: 70rem;
+    width: 80%;
     border-radius: 15px;
     display: block;
     margin-top: 20px;
+}
+
+.rect {
+    cursor: pointer;
+    width: 5%;
+}
+
+@media only screen and  (max-width: 870px) {
+    body {
+        background-color: black;
+    }
+
+    /* .xpGraph {
+        width: 50rem;
+    } */
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    .levelText, .xpText, .auditRatioText {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 542px) {
+    .headerText {
+        display: none;
+    }
 }
