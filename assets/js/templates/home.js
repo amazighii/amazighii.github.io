@@ -6,7 +6,6 @@ import { fetchcredentials } from "../services/services.js";
 
 export async function home() {
     let userinfo = await fetchcredentials(profilequery);
-    // console.log(userinfo.data.user[0].totalDown);
 
     let container = document.querySelector(".container");
     container.innerHTML = "";
@@ -18,17 +17,24 @@ export async function home() {
 
     let cardsContainer = document.createElement('div');
     cardsContainer.className = "cardsContainer";
+   
+let credXp = document.createElement('div');
+credXp.className =  "credXp";
+let levelRatio = document.createElement('div');
+levelRatio.className = "levelRatio";
 
-    cardsContainer.append(profile(userinfo.data.user[0].firstName,
+    credXp.append(profile(userinfo.data.user[0].firstName,
         userinfo.data.user[0].lastName, userinfo.data.user[0].login, userinfo.data.user[0].attrs.gender));
 
-    cardsContainer.append(xpCard(userinfo.data.transaction_aggregate.aggregate.sum.amount));
+    credXp.append(xpCard(userinfo.data.transaction_aggregate.aggregate.sum.amount));
 
-    cardsContainer.append(levelCard(userinfo.data.user[0].events[0].level));
+    levelRatio.append(levelCard(userinfo.data.user[0].events[0].level));
 
-    cardsContainer.append(auditRatio(userinfo.data.user[0].auditRatio,
+    levelRatio.append(auditRatio(userinfo.data.user[0].auditRatio,
         userinfo.data.user[0].totalUp, userinfo.data.user[0].totalDown
     ));
+
+    cardsContainer.append(credXp, levelRatio);
 
     const graphsHolder = document.createElement('div');
     graphsHolder.className = "graphsHolder";

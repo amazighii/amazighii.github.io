@@ -48,7 +48,7 @@
 }
 
 .cardsContainer {
-    width: 20rem;
+    width: 30rem;
 }
 
 .profileContainer {
@@ -270,7 +270,7 @@
 .xpGraph {
     background-color: #b3b3b3;
     height: 25rem;
-    width: 80%;
+    width: 90%;
     border-radius: 15px;
     display: block;
 }
@@ -296,7 +296,7 @@
 .skillChart {
     background-color: #b3b3b3;
     height: 21rem;
-    width: 80%;
+    width: 90%;
     border-radius: 15px;
     display: block;
     margin-top: 20px;
@@ -307,28 +307,73 @@
     width: 5%;
 }
 
-@media only screen and  (max-width: 870px) {
-    body {
-        background-color: black;
-    }
-
-    /* .xpGraph {
-        width: 50rem;
-    } */
-
+@media only screen and (max-width: 870px) {
     .container {
         display: flex;
         flex-direction: column;
         overflow-x: hidden;
         overflow-y: scroll;
     }
-    .levelText, .xpText, .auditRatioText {
+
+    .levelText,
+    .xpText,
+    .auditRatioText {
         display: none;
+    }
+
+    .cardsContainer {
+        display: flex;
+        width: 100%;
+    }
+
+    .credXp,
+    .levelRatio {
+        width: 50%;
+    }
+
+    .profileimg {
+        height: 5rem;
+    }
+
+    .profileContainer {
+        height: 7rem;
+    }
+
+    .credentialsWrapper {
+        height: 6rem;
+    }
+
+    .xpGraph,
+    .skillChart {
+        width: 90%;
     }
 }
 
-@media only screen and (max-width: 542px) {
+@media only screen and (max-width: 600px) {
     .headerText {
         display: none;
+    }
+
+    .cardsContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .credXp,
+    .levelRatio {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width:350px) {
+
+    .profileContainer,
+    .xpContainer,
+    .levelContainer,
+    .auditContainer {
+        margin-left: 0;
     }
 }
